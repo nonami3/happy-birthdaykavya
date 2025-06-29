@@ -1,0 +1,346 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday KavyaShree</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="greeting">Happy Birthday <span class="name">KavyaShree</span></div>
+
+  <!-- Balloons -->
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+
+  <!-- Cake -->
+  <div class="plate">
+    <div class="cake-wrap">
+      <div class="cake-topping">
+        <div class="topping-top">
+          <div class="candle-container">
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+          </div>
+        </div>
+        <div class="topping-front">
+          <div class="top-layer"></div>
+          <div class="bottom-layer"></div>
+        </div>
+      </div>
+      <div class="cake-base">
+        <div class="base-front"></div>
+        <div class="base-top"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cake Piece -->
+  <div class="cake-piece" id="cake-piece"></div>
+
+  <!-- Final Message -->
+  <div class="final-message" id="final-message">Only for you, specially KavyaShree</div>
+
+</div>
+
+<!-- Floating Button -->
+<div class="floating-menu">
+  <button id="blow-btn">🕯️ Blow Candles</button>
+  <button id="cut-btn" style="display: none;">🍰 Cut Cake</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html><style>@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+}
+
+.wrapper {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background: linear-gradient(to top, #cfefff, #ffffff);
+  position: relative;
+}
+
+.greeting {
+  font-family: "Cookie", cursive;
+  font-size: 3.5rem;
+  color: #444;
+  transform: scale(0);
+  text-align: center;
+}
+
+.greeting .name {
+  color: #e94f7c;
+}
+
+/* Balloons */
+.balloon {
+  width: 40px;
+  height: 50px;
+  background-color: #f06;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  position: absolute;
+  bottom: -60px;
+  animation: float 8s infinite ease-in;
+}
+
+.balloon::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 40px;
+  background-color: #555;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.balloon:nth-child(2) { left: 10%; background: #f1c40f; animation-delay: 1s; }
+.balloon:nth-child(3) { left: 30%; background: #e67e22; animation-delay: 2s; }
+.balloon:nth-child(4) { left: 60%; background: #2ecc71; animation-delay: 3s; }
+.balloon:nth-child(5) { left: 80%; background: #9b59b6; animation-delay: 4s; }
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-120vh); opacity: 0; }
+}
+
+/* Cake */
+.plate {
+  width: 250px;
+  height: 75px;
+  background: #f1f1f1;
+  border-radius: 50%;
+  box-shadow: 0px 3px 5px #aaa;
+  position: relative;
+}
+
+.cake-wrap {
+  position: absolute;
+  bottom: 50%;
+}
+
+.cake-base {
+  width: 200px;
+  height: 50px;
+  background: #c5a5c0;
+  position: relative;
+}
+
+.cake-base .base-front {
+  width: 100%;
+  height: 100%;
+  background: inherit;
+}
+
+.cake-base .base-front::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 55px;
+  transform: translateY(-50%);
+  background: inherit;
+  border-radius: 50%;
+}
+
+.cake-base .base-top {
+  position: absolute;
+  width: 100%;
+  height: 65px;
+  top: 0;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: inherit;
+}
+
+.cake-topping {
+  position: absolute;
+  bottom: 0;
+  width: 200px;
+  height: 100px;
+}
+
+.cake-topping .topping-top {
+  background: #b381ae;
+  position: absolute;
+  width: 100%;
+  height: 65px;
+  top: 0;
+  transform: translateY(-50%);
+  border-radius: 50%;
+}
+
+.cake-topping .topping-front {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #b381ae 40%, transparent);
+}
+
+.cake-topping .topping-front .top-layer {
+  height: 30%;
+  background: #b381ae;
+}
+
+.cake-topping .topping-front .bottom-layer {
+  height: 70%;
+  background: #b381ae;
+}
+
+/* Candles */
+.candle-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  top: -30px;
+}
+
+.candle {
+  width: 10px;
+  height: 40px;
+  background: repeating-linear-gradient(45deg, #fff, #f0abf0 5px);
+  position: relative;
+  border-radius: 2px;
+}
+
+.candle .flame {
+  width: 10px;
+  height: 15px;
+  background: radial-gradient(circle, #f90, #f00);
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  animation: flicker 0.3s infinite alternate;
+}
+
+@keyframes flicker {
+  from { transform: translateX(-50%) scale(1); opacity: 1; }
+  to { transform: translateX(-50%) scale(1.2); opacity: 0.8; }
+}
+
+/* Cake Piece */
+.cake-piece {
+  width: 50px;
+  height: 50px;
+  background: #c5a5c0;
+  position: absolute;
+  bottom: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+
+/* Final Message */
+.final-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  font-family: "Cookie", cursive;
+  color: #e94f7c;
+  font-size: 3rem;
+  text-align: center;
+  opacity: 0;
+}
+
+/* Floating Menu */
+.floating-menu {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.floating-menu button {
+  padding: 10px 16px;
+  font-size: 16px;
+  border: none;
+  background: #e94f7c;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: background 0.3s;
+}
+
+.floating-menu button:hover {
+  background: #c0392b;
+}</style><script>const timeline = gsap.timeline({ defaults: { duration: 0.5 } });
+
+// Greeting Animation
+timeline.to('.greeting', {
+  scale: 1,
+  ease: "back.out"
+});
+
+// Cake Slide In
+timeline.from('.cake-wrap', {
+  y: -500,
+  opacity: 0,
+  ease: "bounce.out"
+});
+
+// Candles Appear
+timeline.from('.candle', {
+  y: -50,
+  opacity: 0,
+  stagger: 0.2
+});
+
+// Flames Flicker On
+timeline.from('.flame', {
+  scale: 0,
+  opacity: 0,
+  stagger: 0.2,
+  ease: "back.out"
+});
+
+/* ==== Blow Candles ==== */
+document.getElementById('blow-btn').addEventListener('click', function() {
+  document.querySelectorAll('.flame').forEach(f => f.style.display = 'none');
+  this.style.display = 'none';
+  document.getElementById('cut-btn').style.display = 'block';
+});
+
+/* ==== Cut Cake ==== */
+document.getElementById('cut-btn').addEventListener('click', function() {
+  gsap.to('#cake-piece', {
+    scale: 1,
+    x: 100,
+    duration: 1,
+    ease: "back.out"
+  });
+
+  gsap.to('#final-message', {
+    scale: 1,
+    opacity: 1,
+    delay: 1,
+    ease: "back.out"
+  });
+
+  this.style.display = 'none';
+});</script>
